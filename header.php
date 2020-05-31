@@ -7,14 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php bloginfo('name'); ?></title>
     <?php wp_head(); ?>
+    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/normalize.css' ?>">
+    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/bootstrap.css' ?>">
+    <link rel="stylesheet" href="<?= get_template_directory_uri() . '/css/header.css' ?>">
 </head>
-<body>
-<?php
+<body <?php body_class(); ?>>
+<header class="site-header">
+    <div class="container-alura">
+        <?php
+        the_custom_logo();
+        ?>
+        <nav>
+            <?php
+            wp_nav_menu(
+                array(
+                    'menu' => 'menu-navegacao',
+                    'menu_id' => 'menu-principal'
+                )
+            );
+            ?>
+        </nav>
+    </div>
+</header>
 
-the_custom_logo();
 
-wp_nav_menu(
-        array(
-                'menu' => 'menu-navegacao'
-        )
-);
