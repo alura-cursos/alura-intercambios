@@ -1,0 +1,1 @@
+<h1>Esse é o conteúdo da página destinos</h1>
