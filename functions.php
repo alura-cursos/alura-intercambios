@@ -43,3 +43,17 @@ function alura_intercambios_registrando_menu()
 }
 
 add_action('init', 'alura_intercambios_registrando_menu');
+
+function alura_intercambios_registrando_post_customizado_banner(){
+    register_post_type(
+        'banners',
+        array(
+          'labels' => array('name' => 'Banner'),
+          'public' => true,
+          'menu_position' => 1,
+          'menu_icon' => 'dashicons-format-image',
+          'supports'=> array('title','thumbnail')
+        )
+    );
+}
+add_action('init','alura_intercambios_registrando_post_customizado_banner');
