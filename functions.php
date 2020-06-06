@@ -57,3 +57,24 @@ function alura_intercambios_registrando_post_customizado_banner(){
     );
 }
 add_action('init','alura_intercambios_registrando_post_customizado_banner');
+
+function alura_intercambios_registrando_metabox(){
+    add_meta_box(
+        'ai_registrando_metabox',
+        'Texto para a home',
+        'ai_funcao_callback',
+        'banners'
+    );
+}
+add_action('add_meta_boxes','alura_intercambios_registrando_metabox');
+
+function ai_funcao_callback($post){
+    ?>
+    <label for="texto_home_1">Texto 1</label>
+    <input type="text" name="texto_home_1" style="width: 100%"/>
+    <br>
+    <br>
+    <label for="texto_home_2">Texto 2</label>
+    <input type="text" name="texto_home_2" style="width: 100%"/>
+    <?php
+}
