@@ -69,12 +69,30 @@ function alura_intercambios_registrando_metabox(){
 add_action('add_meta_boxes','alura_intercambios_registrando_metabox');
 
 function ai_funcao_callback($post){
+
+    $texto_home_1 = get_post_meta($post->ID,'_texto_home_1', true);
+    $texto_home_2 = get_post_meta($post->ID,'_texto_home_2', true);
     ?>
     <label for="texto_home_1">Texto 1</label>
-    <input type="text" name="texto_home_1" style="width: 100%"/>
+    <input type="text" name="texto_home_1" style="width: 100%" value="<?= $texto_home_1 ?>"/>
     <br>
     <br>
     <label for="texto_home_2">Texto 2</label>
-    <input type="text" name="texto_home_2" style="width: 100%"/>
+    <input type="text" name="texto_home_2" style="width: 100%" value="<?= $texto_home_2 ?>"/>
     <?php
 }
+
+function alura_intercambios_salvando_dados_metabox($post_id){
+    foreach( $_POST as $key=>$value){
+        if($key !== 'texto_home_1' && $key !== 'texto_home_2'){
+            continue;
+        }
+
+        update_post_meta(
+              $post_id,
+            '_'. $key,
+            $_POST[$key]
+        );
+    }
+}
+add_action('save_post','alura_intercambios_salvando_dados_metabox');
